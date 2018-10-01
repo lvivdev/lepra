@@ -24,7 +24,13 @@ configure do
 end
 
 get '/' do
-  erb 'Hello world!'
+  erb :index
+end
+
+get '/index' do
+	@results = @db.execute 'select * from Posts order by desc'
+	
+	erb :index
 end
 
 get '/new' do
@@ -37,7 +43,7 @@ post '/new' do
 		@error = 'Type text'
 		return erb :new		
 	end
-
+#сохранение введенных данных в базу данных
 	@db.execute 'insert into Posts (content, created_date) values (?, datetime())', [content]
 	erb "You typed: #{content}"
 end
