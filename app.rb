@@ -2,13 +2,19 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
+require 'sqlite3'
 
-get '/' do
-  erb :main
+def init_db
+	@db = SQLite3::Database.new 'lepra.db'
+	@db.results_as_hash = true
 end
 
-get '/main' do
-  erb :main
+before do  
+	init_db
+end
+
+get '/' do
+  erb 'Hello world!'
 end
 
 get '/new' do
@@ -17,5 +23,6 @@ end
 
 post '/new' do
 	content = params[:content]
+
 	erb "You typed: #{content}"
 end
