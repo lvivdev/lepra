@@ -13,6 +13,16 @@ before do
 	init_db
 end
 
+configure do
+	init_db
+	@db.execute 'CREATE TABLE IF NOT EXISTS Posts
+	(
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		created_date DATE,
+		content TEXT
+	)'
+end
+
 get '/' do
   erb 'Hello world!'
 end
@@ -23,6 +33,12 @@ end
 
 post '/new' do
 	content = params[:content]
+
+	@db = init_db
+	@db.execute 'CREATE TABLE Posts where
+
+	'
+
 
 	erb "You typed: #{content}"
 end
