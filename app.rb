@@ -33,12 +33,10 @@ end
 
 post '/new' do
 	content = params[:content]
-
-	@db = init_db
-	@db.execute 'CREATE TABLE Posts where
-
-	'
-
+	if content.length <= 0
+		@error = 'Type text'
+		return erb :new		
+	end
 
 	erb "You typed: #{content}"
 end
