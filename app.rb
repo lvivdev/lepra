@@ -24,11 +24,7 @@ configure do
 end
 
 get '/' do
-  erb :index
-end
-
-get '/index' do
-	@results = @db.execute 'select * from Posts order by desc'
+	@results = @db.execute 'select * from Posts order by id desc'
 	
 	erb :index
 end
@@ -45,5 +41,5 @@ post '/new' do
 	end
 #сохранение введенных данных в базу данных
 	@db.execute 'insert into Posts (content, created_date) values (?, datetime())', [content]
-	erb "You typed: #{content}"
+	redirect to '/'
 end
