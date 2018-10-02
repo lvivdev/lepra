@@ -1,11 +1,18 @@
 <h2>Latest Posts:</h2>
+<br />
 
 <% @results.each do |item| %>
-	<br />
-	<p>
-		<%= item['content'] %> <br />
-	Created at:
+	<p>	
+		<%= item['content'] %>
+		<br />
+		<p>Created at:</p>
+		
+		<br />
 		<%= item['created_date'] %>
-		<hr />
+		
+		<br />
+		<a href="/post/<%= item['id'] %>">Comment</a>
+		<br />	
+
 	</p>
 <% end %>
