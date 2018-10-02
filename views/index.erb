@@ -1,17 +1,15 @@
 <h2>Latest Posts:</h2>
 <br />
 
-<% @results.each do |item| %>
+<% @results.each do |post| %>
 	<p>	
-		<%= item['content'] %>
+		<%= post['content'] %>
 		<br />
-		<p>Created at:</p>
+		Created at: <%= post['created_date'] %>
 		
 		<br />
-		<%= item['created_date'] %>
-		
+		<a href="/details/<%= post['id'] %>">Comment</a>
 		<br />
-		<a href="/details/<%= item['id'] %>">Comment</a>
 		<br />	
 
 	</p>
