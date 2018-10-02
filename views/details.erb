@@ -5,6 +5,14 @@
 	Created at: <%= @row['created_date'] %>
 </p>
 
+<hr />
+
+<% @comments.each do |comment| %>
+	<p>
+		<%= comment['content'] %>
+	</p>
+<% end %>
+<br />
 <h4>Comments:</h4>
 <p>
 	<form action="/details/<%= @row['id'] %>" method="POST" role="form">
