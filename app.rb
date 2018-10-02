@@ -21,6 +21,13 @@ configure do
 		created_date DATE,
 		content TEXT
 	)'
+	# @db.execute 'CREATE TABLE IF NOT EXISTS Messages
+	# (
+	# 	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	# 	created_date DATE,
+	# 	message TEXT
+	# )'
+
 end
 
 get '/' do
@@ -53,3 +60,9 @@ get '/details/:post_id' do
 	erb :details
 end
 
+post '/details/:post_id' do
+	post_id = params[:post_id]
+
+	content = params[:content]
+
+end
