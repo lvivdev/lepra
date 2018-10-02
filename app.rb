@@ -25,7 +25,7 @@ end
 
 get '/' do
 	@results = @db.execute 'select * from Posts order by id desc'
-	
+
 	erb :index
 end
 
@@ -42,4 +42,8 @@ post '/new' do
 #сохранение введенных данных в базу данных
 	@db.execute 'insert into Posts (content, created_date) values (?, datetime())', [content]
 	redirect to '/'
+end
+
+get '/details/:id' do
+
 end
